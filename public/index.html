@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html ng-app="BookList">
+  <head>
+    <meta charset="utf-8">
+    <title>Book List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="./css/styles.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Inline" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
+    <script src='js/app.js'></script>
+    <script src='js/booksController.js'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+   <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+  </head>
+  <body ng-controller="booksController as books">
+    <h1>add books:</h1>
+    <!-- <form ng-submit="books.create(book)">
+      Title: <input type="text" ng-model="book.title" placeholder="Title">
+      Read: <input type="text" ng-model="book.read" placeholder="true/false">
+      <button type="submit" class="btn-large waves-effect waves-light black">Add</button>
+    </form> -->
+    <div class="bookCards">
+      <div class="row">
+        <div class="col s12 m12">
+          <div class="card" id="cardCss">
+            <div class="card-image">
+              <div class="card-content">
+                <form ng-submit="books.create(book)">
+                  Title: <input type="text" ng-model="book.title" placeholder="Title">
+                  Read: <input type="text" ng-model="book.read"  placeholder="true/false">
+                  <button type="submit" class="btn-large waves-effect waves-light black">Save</button>
+                </form>
+              </div>
+             </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <h1>books to read:</h1>
+    <div ng-repeat="book in books.books" class="bookCards">
+      <div class="row">
+        <div class="col s12 m12">
+          <div class="card" id="cardCss">
+            <div class="card-image">
+              <div class="card-content">
+                <h4 ng-click="showEdit = ! showEdit">
+                  {{book.title}}
+                </h4>
+                <div ng-show="showEdit">
+                  <form ng-submit="books.update(book)">
+                    Title: <input type="text" ng-model="book.title">
+                    Read: Read: <input type="text" ng-model="book.read">
+                    <button type="submit" class="btn-large waves-effect waves-light black">Save</button>
+                  </form>
+                  <form ng-submit="books.destroy(book)">
+                    <button type="submit" class="btn-large waves-effect waves-light black">Delete</button>
+                  </form>
+                </div>
+              </div>
+             </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h1>books that I have read:</h1>
+
+  </body>
+</html>
