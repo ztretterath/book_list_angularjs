@@ -3,8 +3,8 @@
   .controller('booksController', booksController)
 
   function booksController($http){
-    // var url = 'http://localhost:3000'
-    var url = 'https://intense-waters-10666.herokuapp.com'
+    var url = 'http://localhost:3000'
+    // var url = 'https://intense-waters-10666.herokuapp.com'
     var self = this
 
     $http.get(`${url}/books`)
@@ -16,6 +16,21 @@
         console.log(error);
       })
 
+    self.index = function(books){
+      return $http({
+        url: `${url}/books`,
+        method: 'GET',
+        data: books
+      })
+      .then(function(response){
+        self.books = response.data.books
+        console.log('GOT BOOKS ===>', response.data.books);
+      })
+      .catch(function(error){
+        console.log(error);
+      })
+    }
+
     self.create = function(book){
       return $http({
         url: `${url}/books`,
@@ -25,6 +40,9 @@
       .then(function(response){
         book.title = response.data.book.title
         book.read = response.data.book.read
+      })
+      .then(function(response){
+        self.index();
       })
       .catch(function(error){
         console.log(error);
@@ -42,6 +60,9 @@
         book.read = response.data.book.read
         console.log(book);
       })
+      .then(function(response){
+        self.index();
+      })
       .catch(function(error){
         console.log(error);
       })
@@ -55,6 +76,9 @@
       })
       .then(function(response){
         console.log('DELETE WORKS', response);
+      })
+      .then(function(response){
+        self.index();
       })
       .catch(function(error){
         console.log(error);

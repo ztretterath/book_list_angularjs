@@ -16,8 +16,30 @@ button .btn-large {
   color: #fdd835;
 }
 
+#input:focus,
+#input1:focus,
+#input2:focus,
+#input3:focus,
+#input4:focus,
+#input5:focus {
+  border-bottom: 1px solid #353B40;
+  box-shadow: 0 1px 0 0 #353B40;
+  color: white;
+}
+
+#input,
+#input1,
+#input2,
+#input3,
+#input4,
+#input5 {
+  border-bottom: 1px solid gray;
+  box-shadow: 0 1px 0 0 gray;
+  color: gray;
+}
+
 body {
-  background-color: #ff9e80;
+  background-color: grey;
 }
 
 h1 {

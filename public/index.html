@@ -20,8 +20,8 @@
   <body ng-controller="booksController as books">
     <h1>add books:</h1>
     <!-- <form ng-submit="books.create(book)">
-      Title: <input type="text" ng-model="book.title" placeholder="Title">
-      Read: <input type="text" ng-model="book.read" placeholder="true/false">
+      Title: <input id="input" type="text" ng-model="book.title" placeholder="Title">
+      Read: <input id="input" type="text" ng-model="book.read" placeholder="true/false">
       <button type="submit" class="btn-large waves-effect waves-light black">Add</button>
     </form> -->
     <div class="bookCards">
@@ -31,9 +31,18 @@
             <div class="card-image">
               <div class="card-content">
                 <form ng-submit="books.create(book)">
-                  Title: <input type="text" ng-model="book.title" placeholder="Title">
-                  Read: <input type="text" ng-model="book.read"  placeholder="true/false">
-                  <button type="submit" class="btn-large waves-effect waves-light black">Save</button>
+                  Title: <input id="input" type="text" ng-model="book.title" placeholder="Title">
+                  <!-- Read: <input id="input1" type="text" ng-model="book.read"  placeholder="t / f"> -->
+                  Have you read this title?
+                    <p>
+                      <input name="group1" type="radio" id="true" ng-model="book.read" value="true"/>
+                      <label for="true">true</label>
+                    </p>
+                    <p>
+                      <input name="group1" type="radio" id="false" ng-model="book.read" value="false"/>
+                      <label for="false">false</label>
+                    </p>
+                  <button type="submit" class="btn-large waves-effect waves-light black">Add</button>
                 </form>
               </div>
              </div>
@@ -54,8 +63,17 @@
                 </h4>
                 <div ng-show="showEdit">
                   <form ng-submit="books.update(book)">
-                    Title: <input type="text" ng-model="book.title">
-                    Read: <input type="text" ng-model="book.read">
+                    Title: <input id="input2" type="text" ng-model="book.title">
+                    <!-- Read: <input id="inpu3" type="text" ng-model="book.read"> -->
+                    Have you read this title?
+                      <p>
+                        <input name="group1" type="radio" id="true" ng-model="book.read" value="true"/>
+                        <label for="true">true</label>
+                      </p>
+                      <p>
+                        <input name="group1" type="radio" id="false" ng-model="book.read" value="false"/>
+                        <label for="false">false</label>
+                      </p>
                     <button type="submit" class="btn-large waves-effect waves-light black">Save</button>
                   </form>
                   <form ng-submit="books.destroy(book)">
@@ -70,7 +88,7 @@
       </div>
 
       <h1>books that I have read:</h1>
-      <div ng-repeat="book in books.books" class="bookCards" ng-if="book.read == true">
+      <div ng-repeat="book in books.books" class="bookCards" ng-if="book.read === true">
         <div class="row">
           <div class="col s12 m12">
             <div class="card" id="cardCss">
@@ -81,9 +99,17 @@
                   </h4>
                   <div ng-show="showEdit">
                     <form ng-submit="books.update(book)">
-                      Title: <input type="text" ng-model="book.title">
-                      Read: <input type="text" ng-model="book.read">
-                      <button type="submit" class="btn-large waves-effect waves-light black">Save</button>
+                      Title: <input id="input4" type="text" ng-model="book.title">
+                      Have you read this title?
+                        <p>
+                          <input name="group1" type="radio" id="true" ng-model="book.read" value="true"/>
+                          <label for="true">true</label>
+                        </p>
+                        <p>
+                          <input name="group1" type="radio" id="false" ng-model="book.read" value="false"/>
+                          <label for="false">false</label>
+                        </p>
+                        <button type="submit" class="btn-large waves-effect waves-light black">Save</button>
                     </form>
                     <form ng-submit="books.destroy(book)">
                       <button type="submit" class="btn-large waves-effect waves-light black">Delete</button>
