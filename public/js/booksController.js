@@ -3,7 +3,8 @@
   .controller('booksController', booksController)
 
   function booksController($http){
-    var url = 'http://localhost:3000'
+    // var url = 'http://localhost:3000'
+    var url = 'https://intense-waters-10666.herokuapp.com'
     var self = this
 
     $http.get(`${url}/books`)
