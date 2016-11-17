@@ -42,6 +42,7 @@
         book.read = response.data.book.read
       })
       .then(function(response){
+        book.title = ''
         self.index();
       })
       .catch(function(error){
@@ -57,7 +58,6 @@
       })
       .then(function(response){
         book.title = response.data.book.title
-        book.read = response.data.book.read
         console.log(book);
       })
       .then(function(response){
@@ -76,6 +76,24 @@
       })
       .then(function(response){
         console.log('DELETE WORKS', response);
+      })
+      .then(function(response){
+        self.index();
+      })
+      .catch(function(error){
+        console.log(error);
+      })
+    }
+
+    self.finished = function(book){
+      book.read = true
+      return $http({
+        url: `${url}/books/${book.id}/finished`,
+        method: 'PUT',
+        data: book
+      })
+      .then(function(response){
+        console.log(book.read);
       })
       .then(function(response){
         self.index();
