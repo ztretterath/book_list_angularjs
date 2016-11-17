@@ -2,6 +2,7 @@
 var express = require('express');
 var app     = express();
 var path    = require('path');
+var port    = provess.env.PORT || 4000
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -11,6 +12,6 @@ app.get('/', function(request, response){
 })
 
 // rails will run on 3000
-app.listen(4000, function(){
-  console.log('LISTENING ON 4000');
+app.listen(port, function(){
+  console.log('At your service on ==>', port);
 })
