@@ -85,6 +85,7 @@
       })
     }
 
+    //Move book from to read -> read
     self.finished = function(book){
       book.read = true
       return $http({
