@@ -3,6 +3,8 @@
   .controller('booksController', booksController)
 
   function booksController($http){
+    var api = 'https://www.goodreads.com/search.xml?key=BJngDXhR086iz8FkXSwmow&q='
+
     // var url = 'http://localhost:3000'
     var url = 'https://intense-waters-10666.herokuapp.com'
     var self = this
