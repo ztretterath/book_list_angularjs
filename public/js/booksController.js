@@ -3,16 +3,13 @@
   .controller('booksController', booksController)
 
   function booksController($http){
-    var api = 'https://www.goodreads.com/search.xml?key=BJngDXhR086iz8FkXSwmow&q='
-
-    // var url = 'http://localhost:3000'
-    var url = 'https://intense-waters-10666.herokuapp.com'
+    var url = 'http://localhost:3000'
+    // var url = 'https://intense-waters-10666.herokuapp.com'
     var self = this
 
     $http.get(`${url}/books`)
       .then(function(response){
         self.books = response.data.books
-        console.log(response);
       })
       .catch(function(error){
         console.log(error);
@@ -52,6 +49,20 @@
       })
     }
 
+    self.query = function(book){
+      return $http({
+        url: `${url}/query`,
+        method: 'GET',
+        data: book
+      })
+      .then(function(response){
+        console.log(response);
+      })
+      .catch(function(error){
+        console.log(error);
+      })
+    }
+
     self.update = function(book){
       return $http({
         url: `${url}/books/${book.id}`,
@@ -70,14 +81,12 @@
       })
     }
 
+    //REMOVE FROM SITE
     self.destroy = function(book){
       return $http({
         url: `${url}/books/${book.id}`,
         method: 'DELETE',
         data: book
-      })
-      .then(function(response){
-        console.log('DELETE WORKS', response);
       })
       .then(function(response){
         self.index();

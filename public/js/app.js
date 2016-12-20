@@ -1,3 +1,3 @@
 (function(){
-  angular.module('BookList', []);
+  angular.module('BookList', ['ngAnimate']);
 })()
